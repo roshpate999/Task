@@ -1,0 +1,669 @@
+{
+	"info": {
+		"_postman_id": "f3acc91d-f8d7-4090-8805-2f93d0b67639",
+		"name": "SurveyManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8675798"
+	},
+	"item": [
+		{
+			"name": "Create Survey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Team Collaboration Survey\",\r\n    \"questions\": [\r\n        { \"questionText\": \"How would you rate collaboration within your team?\" },\r\n        { \"questionText\": \"How effectively does your team communicate?\" },\r\n        { \"questionText\": \"How much trust do you feel exists among team members?\" },\r\n        { \"questionText\": \"How well are conflicts resolved within the team?\" },\r\n        { \"questionText\": \"How would you rate your team's productivity?\" }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/surveys/createSurvey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys",
+						"createSurvey"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Team Collaboration Survey\",\r\n    \"questions\": [\r\n        { \"questionText\": \"How would you rate collaboration within your team?\" },\r\n        { \"questionText\": \"How effectively does your team communicate?\" },\r\n        { \"questionText\": \"How much trust do you feel exists among team members?\" },\r\n        { \"questionText\": \"How well are conflicts resolved within the team?\" },\r\n        { \"questionText\": \"How would you rate your team's productivity?\" }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/surveys/createSurvey",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"surveys",
+								"createSurvey"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"_postman_previewlanguage": "",
+					"header": "",
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Submit Survey Response",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"responses\": [\r\n        {\r\n            \"questionId\": 1,\r\n            \"rating\": 3\r\n        },\r\n        {\r\n            \"questionId\": 2,\r\n            \"rating\": 3\r\n        },\r\n        {\r\n            \"questionId\": 3,\r\n            \"rating\": 3\r\n        },\r\n        {\r\n            \"questionId\": 4,\r\n            \"rating\": 3\r\n        },\r\n        {\r\n            \"questionId\": 5,\r\n            \"rating\": 3\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/surveys/1/responses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys",
+						"1",
+						"responses"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcnVuQHByZWRmdXQuY29tIiwiZXhwIjoxNzI5NDg4OTg1LCJpYXQiOjE3Mjk0NzA5ODV9.BSXYujWtkQeZpAtavRpJHlSyCwouIwFrQSoilNcW_5AjvQHBa76jTRsyxiBAwpIPv02gJCron-9XUgOa_NUFBA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/app/dashbordapi?startdate=2020-09-24&enddate=2024-10-24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"app",
+								"dashbordapi"
+							],
+							"query": [
+								{
+									"key": "startdate",
+									"value": "2020-09-24"
+								},
+								{
+									"key": "enddate",
+									"value": "2024-10-24"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5183"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Oct 2024 02:33:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"top_product\":[{\"product\":\"Acne Vanishing Combo\",\"price\":\"510449.55\"},{\"product\":\"Acne Relief Combo  Test\",\"price\":\"335225.55\"},{\"product\":\"Anti Acne kit\",\"price\":\"266937.0\"},{\"product\":\"Adequate Skin Hydrators Combo\",\"price\":\"222276.0\"},{\"product\":\"Hair Strengthening Combo\",\"price\":\"167860.0\"}],\"delayed_report\":[{\"payment_type\":\"Prepaid\",\"manifest_delay_count\":247,\"printed_delay_count\":184,\"delivered_delay_count\":0,\"unlabel_delay_count\":84,\"in_transit_delay_count\":12,\"label_delay_count\":2},{\"payment_type\":\"COD\",\"manifest_delay_count\":236,\"printed_delay_count\":174,\"delivered_delay_count\":0,\"unlabel_delay_count\":135,\"in_transit_delay_count\":3,\"label_delay_count\":4}],\"cancelled_orders\":[{\"cancel_reason\":\"wrong_contact_information\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":2,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"other\",\"details\":[{\"order_count\":49,\"payment_type\":\"Prepaid\"},{\"order_count\":52,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"cod_to_prepaid_conversion\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"ordered_twice\",\"details\":[{\"order_count\":2,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unservicable_pincode\",\"details\":[{\"order_count\":2,\"payment_type\":\"Prepaid\"},{\"order_count\":1,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"merge_orders\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"no_reason\",\"details\":[{\"order_count\":9,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"others\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unknown\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"customer\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]}],\"manifest_counts\":[{\"manifest_count\":381,\"courier_name\":\"BlueDart\"},{\"manifest_count\":65,\"courier_name\":\"Delhivery\"},{\"manifest_count\":12,\"courier_name\":\"DHL\"},{\"manifest_count\":13,\"courier_name\":\"DTDC\"},{\"manifest_count\":9,\"courier_name\":\"EKART\"},{\"manifest_count\":13,\"courier_name\":\"Other\"}],\"in_transit\":[{\"order_count\":4,\"status\":\"Out for Delivery\"},{\"order_count\":2,\"status\":\"Pickup\"}],\"avg_sales\":2128.34,\"ndrOrderCounts\":[{\"app_order_status\":\"Delivered\",\"order_count\":4},{\"app_order_status\":\"In transit\",\"order_count\":15},{\"app_order_status\":\"Pickup\",\"order_count\":1}],\"average_delivery_time\":[{\"order_count\":1,\"days_taken\":0},{\"order_count\":1,\"days_taken\":-27},{\"order_count\":1,\"days_taken\":34},{\"order_count\":1,\"days_taken\":28},{\"order_count\":1,\"days_taken\":27}],\"total_orders\":1242,\"new_orders\":{\"domestic_cod\":131,\"domestic_prepaid\":82,\"International\":5},\"shipment_carrier\":[{\"count\":\"1611\",\"name\":\"bluedart\"},{\"count\":\"188\",\"name\":\"delhivery\"},{\"count\":\"63\",\"name\":\"dtdc\"},{\"count\":\"38\",\"name\":\"other\"},{\"count\":\"33\",\"name\":\"ekart\"},{\"count\":\"84\",\"name\":\"dhl\"}],\"sales\":[{\"start_time\":\"0:00\",\"total\":0,\"end_time\":\"3:00\"},{\"start_time\":\"3:00\",\"total\":0,\"end_time\":\"6:00\"},{\"start_time\":\"6:00\",\"total\":0,\"end_time\":\"9:00\"},{\"start_time\":\"9:00\",\"total\":0,\"end_time\":\"12:00\"},{\"start_time\":\"12:00\",\"total\":0,\"end_time\":\"15:00\"},{\"start_time\":\"15:00\",\"total\":0,\"end_time\":\"18:00\"},{\"start_time\":\"18:00\",\"total\":0,\"end_time\":\"21:00\"},{\"start_time\":\"21:00\",\"total\":0,\"end_time\":\"24:00\"}],\"labelled\":6,\"delivered_orders\":[{\"delayed_count\":4,\"ontime_count\":2}],\"perpaid_order\":621,\"printed\":358,\"cod_order\":621,\"in_progress\":364,\"shipped\":2017,\"recent_order\":[{\"price\":\"890.0\",\"order_number\":\"2333\",\"order_id\":\"5876529725689\",\"order_name\":\"#2333\"},{\"price\":\"640.0\",\"order_number\":\"2332\",\"order_id\":\"5876231340281\",\"order_name\":\"#2332\"},{\"price\":\"640.0\",\"order_number\":\"2331\",\"order_id\":\"5876230815993\",\"order_name\":\"#2331\"},{\"price\":\"840.0\",\"order_number\":\"2330\",\"order_id\":\"5871846293753\",\"order_name\":\"#2330\"},{\"price\":\"840.0\",\"order_number\":\"2329\",\"order_id\":\"5871846064377\",\"order_name\":\"#2329\"}],\"orders\":[{\"date\":\"2024-10-24\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-23\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-22\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-21\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-20\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-19\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-18\",\"order_count\":0,\"return_count\":0}],\"zone_performance_data\":{\"Delhivery\":[{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":16.5,\"total_orders\":2,\"delivered_orders\":2,\"payment_type\":\"COD\",\"in_transit_orders\":0,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":50,\"out_tat_percentage\":50},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":11.6,\"total_orders\":3,\"delivered_orders\":2,\"payment_type\":\"prepaid\",\"in_transit_orders\":1,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":33.33,\"out_tat_percentage\":33.33},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":0,\"delayed_orders\":1,\"avg_tat\":658,\"total_orders\":1,\"delivered_orders\":1,\"payment_type\":\"prepaid\",\"in_transit_orders\":0,\"zone\":\"C\",\"out_tat_orders\":1,\"in_tat_percentage\":0,\"out_tat_percentage\":100}]},\"total_sales\":2643401.85,\"customer\":484756}"
+				}
+			]
+		},
+		{
+			"name": "Get Aggregated Results",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/surveys/1/results",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys",
+						"1",
+						"results"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcnVuQHByZWRmdXQuY29tIiwiZXhwIjoxNzI5NDg4OTg1LCJpYXQiOjE3Mjk0NzA5ODV9.BSXYujWtkQeZpAtavRpJHlSyCwouIwFrQSoilNcW_5AjvQHBa76jTRsyxiBAwpIPv02gJCron-9XUgOa_NUFBA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/app/dashbordapi?startdate=2020-09-24&enddate=2024-10-24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"app",
+								"dashbordapi"
+							],
+							"query": [
+								{
+									"key": "startdate",
+									"value": "2020-09-24"
+								},
+								{
+									"key": "enddate",
+									"value": "2024-10-24"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5183"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Oct 2024 02:33:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"top_product\":[{\"product\":\"Acne Vanishing Combo\",\"price\":\"510449.55\"},{\"product\":\"Acne Relief Combo  Test\",\"price\":\"335225.55\"},{\"product\":\"Anti Acne kit\",\"price\":\"266937.0\"},{\"product\":\"Adequate Skin Hydrators Combo\",\"price\":\"222276.0\"},{\"product\":\"Hair Strengthening Combo\",\"price\":\"167860.0\"}],\"delayed_report\":[{\"payment_type\":\"Prepaid\",\"manifest_delay_count\":247,\"printed_delay_count\":184,\"delivered_delay_count\":0,\"unlabel_delay_count\":84,\"in_transit_delay_count\":12,\"label_delay_count\":2},{\"payment_type\":\"COD\",\"manifest_delay_count\":236,\"printed_delay_count\":174,\"delivered_delay_count\":0,\"unlabel_delay_count\":135,\"in_transit_delay_count\":3,\"label_delay_count\":4}],\"cancelled_orders\":[{\"cancel_reason\":\"wrong_contact_information\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":2,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"other\",\"details\":[{\"order_count\":49,\"payment_type\":\"Prepaid\"},{\"order_count\":52,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"cod_to_prepaid_conversion\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"ordered_twice\",\"details\":[{\"order_count\":2,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unservicable_pincode\",\"details\":[{\"order_count\":2,\"payment_type\":\"Prepaid\"},{\"order_count\":1,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"merge_orders\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"no_reason\",\"details\":[{\"order_count\":9,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"others\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unknown\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"customer\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]}],\"manifest_counts\":[{\"manifest_count\":381,\"courier_name\":\"BlueDart\"},{\"manifest_count\":65,\"courier_name\":\"Delhivery\"},{\"manifest_count\":12,\"courier_name\":\"DHL\"},{\"manifest_count\":13,\"courier_name\":\"DTDC\"},{\"manifest_count\":9,\"courier_name\":\"EKART\"},{\"manifest_count\":13,\"courier_name\":\"Other\"}],\"in_transit\":[{\"order_count\":4,\"status\":\"Out for Delivery\"},{\"order_count\":2,\"status\":\"Pickup\"}],\"avg_sales\":2128.34,\"ndrOrderCounts\":[{\"app_order_status\":\"Delivered\",\"order_count\":4},{\"app_order_status\":\"In transit\",\"order_count\":15},{\"app_order_status\":\"Pickup\",\"order_count\":1}],\"average_delivery_time\":[{\"order_count\":1,\"days_taken\":0},{\"order_count\":1,\"days_taken\":-27},{\"order_count\":1,\"days_taken\":34},{\"order_count\":1,\"days_taken\":28},{\"order_count\":1,\"days_taken\":27}],\"total_orders\":1242,\"new_orders\":{\"domestic_cod\":131,\"domestic_prepaid\":82,\"International\":5},\"shipment_carrier\":[{\"count\":\"1611\",\"name\":\"bluedart\"},{\"count\":\"188\",\"name\":\"delhivery\"},{\"count\":\"63\",\"name\":\"dtdc\"},{\"count\":\"38\",\"name\":\"other\"},{\"count\":\"33\",\"name\":\"ekart\"},{\"count\":\"84\",\"name\":\"dhl\"}],\"sales\":[{\"start_time\":\"0:00\",\"total\":0,\"end_time\":\"3:00\"},{\"start_time\":\"3:00\",\"total\":0,\"end_time\":\"6:00\"},{\"start_time\":\"6:00\",\"total\":0,\"end_time\":\"9:00\"},{\"start_time\":\"9:00\",\"total\":0,\"end_time\":\"12:00\"},{\"start_time\":\"12:00\",\"total\":0,\"end_time\":\"15:00\"},{\"start_time\":\"15:00\",\"total\":0,\"end_time\":\"18:00\"},{\"start_time\":\"18:00\",\"total\":0,\"end_time\":\"21:00\"},{\"start_time\":\"21:00\",\"total\":0,\"end_time\":\"24:00\"}],\"labelled\":6,\"delivered_orders\":[{\"delayed_count\":4,\"ontime_count\":2}],\"perpaid_order\":621,\"printed\":358,\"cod_order\":621,\"in_progress\":364,\"shipped\":2017,\"recent_order\":[{\"price\":\"890.0\",\"order_number\":\"2333\",\"order_id\":\"5876529725689\",\"order_name\":\"#2333\"},{\"price\":\"640.0\",\"order_number\":\"2332\",\"order_id\":\"5876231340281\",\"order_name\":\"#2332\"},{\"price\":\"640.0\",\"order_number\":\"2331\",\"order_id\":\"5876230815993\",\"order_name\":\"#2331\"},{\"price\":\"840.0\",\"order_number\":\"2330\",\"order_id\":\"5871846293753\",\"order_name\":\"#2330\"},{\"price\":\"840.0\",\"order_number\":\"2329\",\"order_id\":\"5871846064377\",\"order_name\":\"#2329\"}],\"orders\":[{\"date\":\"2024-10-24\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-23\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-22\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-21\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-20\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-19\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-18\",\"order_count\":0,\"return_count\":0}],\"zone_performance_data\":{\"Delhivery\":[{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":16.5,\"total_orders\":2,\"delivered_orders\":2,\"payment_type\":\"COD\",\"in_transit_orders\":0,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":50,\"out_tat_percentage\":50},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":11.6,\"total_orders\":3,\"delivered_orders\":2,\"payment_type\":\"prepaid\",\"in_transit_orders\":1,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":33.33,\"out_tat_percentage\":33.33},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":0,\"delayed_orders\":1,\"avg_tat\":658,\"total_orders\":1,\"delivered_orders\":1,\"payment_type\":\"prepaid\",\"in_transit_orders\":0,\"zone\":\"C\",\"out_tat_orders\":1,\"in_tat_percentage\":0,\"out_tat_percentage\":100}]},\"total_sales\":2643401.85,\"customer\":484756}"
+				}
+			]
+		},
+		{
+			"name": "Get Detailed Survey Results",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Team Collaboration Survey\",\r\n    \"questions\": [\r\n        { \"questionText\": \"How would you rate collaboration within your team?\" },\r\n        { \"questionText\": \"How effectively does your team communicate?\" },\r\n        { \"questionText\": \"How much trust do you feel exists among team members?\" },\r\n        { \"questionText\": \"How well are conflicts resolved within the team?\" },\r\n        { \"questionText\": \"How would you rate your team's productivity?\" }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/surveys/1/allresponses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys",
+						"1",
+						"allresponses"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcnVuQHByZWRmdXQuY29tIiwiZXhwIjoxNzI5NDg4OTg1LCJpYXQiOjE3Mjk0NzA5ODV9.BSXYujWtkQeZpAtavRpJHlSyCwouIwFrQSoilNcW_5AjvQHBa76jTRsyxiBAwpIPv02gJCron-9XUgOa_NUFBA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/app/dashbordapi?startdate=2020-09-24&enddate=2024-10-24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"app",
+								"dashbordapi"
+							],
+							"query": [
+								{
+									"key": "startdate",
+									"value": "2020-09-24"
+								},
+								{
+									"key": "enddate",
+									"value": "2024-10-24"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5183"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Oct 2024 02:33:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"top_product\":[{\"product\":\"Acne Vanishing Combo\",\"price\":\"510449.55\"},{\"product\":\"Acne Relief Combo  Test\",\"price\":\"335225.55\"},{\"product\":\"Anti Acne kit\",\"price\":\"266937.0\"},{\"product\":\"Adequate Skin Hydrators Combo\",\"price\":\"222276.0\"},{\"product\":\"Hair Strengthening Combo\",\"price\":\"167860.0\"}],\"delayed_report\":[{\"payment_type\":\"Prepaid\",\"manifest_delay_count\":247,\"printed_delay_count\":184,\"delivered_delay_count\":0,\"unlabel_delay_count\":84,\"in_transit_delay_count\":12,\"label_delay_count\":2},{\"payment_type\":\"COD\",\"manifest_delay_count\":236,\"printed_delay_count\":174,\"delivered_delay_count\":0,\"unlabel_delay_count\":135,\"in_transit_delay_count\":3,\"label_delay_count\":4}],\"cancelled_orders\":[{\"cancel_reason\":\"wrong_contact_information\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":2,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"other\",\"details\":[{\"order_count\":49,\"payment_type\":\"Prepaid\"},{\"order_count\":52,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"cod_to_prepaid_conversion\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"ordered_twice\",\"details\":[{\"order_count\":2,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unservicable_pincode\",\"details\":[{\"order_count\":2,\"payment_type\":\"Prepaid\"},{\"order_count\":1,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"merge_orders\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"no_reason\",\"details\":[{\"order_count\":9,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"others\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unknown\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"customer\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]}],\"manifest_counts\":[{\"manifest_count\":381,\"courier_name\":\"BlueDart\"},{\"manifest_count\":65,\"courier_name\":\"Delhivery\"},{\"manifest_count\":12,\"courier_name\":\"DHL\"},{\"manifest_count\":13,\"courier_name\":\"DTDC\"},{\"manifest_count\":9,\"courier_name\":\"EKART\"},{\"manifest_count\":13,\"courier_name\":\"Other\"}],\"in_transit\":[{\"order_count\":4,\"status\":\"Out for Delivery\"},{\"order_count\":2,\"status\":\"Pickup\"}],\"avg_sales\":2128.34,\"ndrOrderCounts\":[{\"app_order_status\":\"Delivered\",\"order_count\":4},{\"app_order_status\":\"In transit\",\"order_count\":15},{\"app_order_status\":\"Pickup\",\"order_count\":1}],\"average_delivery_time\":[{\"order_count\":1,\"days_taken\":0},{\"order_count\":1,\"days_taken\":-27},{\"order_count\":1,\"days_taken\":34},{\"order_count\":1,\"days_taken\":28},{\"order_count\":1,\"days_taken\":27}],\"total_orders\":1242,\"new_orders\":{\"domestic_cod\":131,\"domestic_prepaid\":82,\"International\":5},\"shipment_carrier\":[{\"count\":\"1611\",\"name\":\"bluedart\"},{\"count\":\"188\",\"name\":\"delhivery\"},{\"count\":\"63\",\"name\":\"dtdc\"},{\"count\":\"38\",\"name\":\"other\"},{\"count\":\"33\",\"name\":\"ekart\"},{\"count\":\"84\",\"name\":\"dhl\"}],\"sales\":[{\"start_time\":\"0:00\",\"total\":0,\"end_time\":\"3:00\"},{\"start_time\":\"3:00\",\"total\":0,\"end_time\":\"6:00\"},{\"start_time\":\"6:00\",\"total\":0,\"end_time\":\"9:00\"},{\"start_time\":\"9:00\",\"total\":0,\"end_time\":\"12:00\"},{\"start_time\":\"12:00\",\"total\":0,\"end_time\":\"15:00\"},{\"start_time\":\"15:00\",\"total\":0,\"end_time\":\"18:00\"},{\"start_time\":\"18:00\",\"total\":0,\"end_time\":\"21:00\"},{\"start_time\":\"21:00\",\"total\":0,\"end_time\":\"24:00\"}],\"labelled\":6,\"delivered_orders\":[{\"delayed_count\":4,\"ontime_count\":2}],\"perpaid_order\":621,\"printed\":358,\"cod_order\":621,\"in_progress\":364,\"shipped\":2017,\"recent_order\":[{\"price\":\"890.0\",\"order_number\":\"2333\",\"order_id\":\"5876529725689\",\"order_name\":\"#2333\"},{\"price\":\"640.0\",\"order_number\":\"2332\",\"order_id\":\"5876231340281\",\"order_name\":\"#2332\"},{\"price\":\"640.0\",\"order_number\":\"2331\",\"order_id\":\"5876230815993\",\"order_name\":\"#2331\"},{\"price\":\"840.0\",\"order_number\":\"2330\",\"order_id\":\"5871846293753\",\"order_name\":\"#2330\"},{\"price\":\"840.0\",\"order_number\":\"2329\",\"order_id\":\"5871846064377\",\"order_name\":\"#2329\"}],\"orders\":[{\"date\":\"2024-10-24\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-23\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-22\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-21\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-20\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-19\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-18\",\"order_count\":0,\"return_count\":0}],\"zone_performance_data\":{\"Delhivery\":[{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":16.5,\"total_orders\":2,\"delivered_orders\":2,\"payment_type\":\"COD\",\"in_transit_orders\":0,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":50,\"out_tat_percentage\":50},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":11.6,\"total_orders\":3,\"delivered_orders\":2,\"payment_type\":\"prepaid\",\"in_transit_orders\":1,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":33.33,\"out_tat_percentage\":33.33},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":0,\"delayed_orders\":1,\"avg_tat\":658,\"total_orders\":1,\"delivered_orders\":1,\"payment_type\":\"prepaid\",\"in_transit_orders\":0,\"zone\":\"C\",\"out_tat_orders\":1,\"in_tat_percentage\":0,\"out_tat_percentage\":100}]},\"total_sales\":2643401.85,\"customer\":484756}"
+				}
+			]
+		},
+		{
+			"name": "Get Survey Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/surveys/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys",
+						"1"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcnVuQHByZWRmdXQuY29tIiwiZXhwIjoxNzI5NDg4OTg1LCJpYXQiOjE3Mjk0NzA5ODV9.BSXYujWtkQeZpAtavRpJHlSyCwouIwFrQSoilNcW_5AjvQHBa76jTRsyxiBAwpIPv02gJCron-9XUgOa_NUFBA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/app/dashbordapi?startdate=2020-09-24&enddate=2024-10-24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"app",
+								"dashbordapi"
+							],
+							"query": [
+								{
+									"key": "startdate",
+									"value": "2020-09-24"
+								},
+								{
+									"key": "enddate",
+									"value": "2024-10-24"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5183"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 28 Oct 2024 02:33:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"top_product\":[{\"product\":\"Acne Vanishing Combo\",\"price\":\"510449.55\"},{\"product\":\"Acne Relief Combo  Test\",\"price\":\"335225.55\"},{\"product\":\"Anti Acne kit\",\"price\":\"266937.0\"},{\"product\":\"Adequate Skin Hydrators Combo\",\"price\":\"222276.0\"},{\"product\":\"Hair Strengthening Combo\",\"price\":\"167860.0\"}],\"delayed_report\":[{\"payment_type\":\"Prepaid\",\"manifest_delay_count\":247,\"printed_delay_count\":184,\"delivered_delay_count\":0,\"unlabel_delay_count\":84,\"in_transit_delay_count\":12,\"label_delay_count\":2},{\"payment_type\":\"COD\",\"manifest_delay_count\":236,\"printed_delay_count\":174,\"delivered_delay_count\":0,\"unlabel_delay_count\":135,\"in_transit_delay_count\":3,\"label_delay_count\":4}],\"cancelled_orders\":[{\"cancel_reason\":\"wrong_contact_information\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":2,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"other\",\"details\":[{\"order_count\":49,\"payment_type\":\"Prepaid\"},{\"order_count\":52,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"cod_to_prepaid_conversion\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"ordered_twice\",\"details\":[{\"order_count\":2,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unservicable_pincode\",\"details\":[{\"order_count\":2,\"payment_type\":\"Prepaid\"},{\"order_count\":1,\"payment_type\":\"COD\"}]},{\"cancel_reason\":\"merge_orders\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"no_reason\",\"details\":[{\"order_count\":9,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"others\",\"details\":[{\"order_count\":1,\"payment_type\":\"COD\"},{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"unknown\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]},{\"cancel_reason\":\"customer\",\"details\":[{\"order_count\":1,\"payment_type\":\"Prepaid\"}]}],\"manifest_counts\":[{\"manifest_count\":381,\"courier_name\":\"BlueDart\"},{\"manifest_count\":65,\"courier_name\":\"Delhivery\"},{\"manifest_count\":12,\"courier_name\":\"DHL\"},{\"manifest_count\":13,\"courier_name\":\"DTDC\"},{\"manifest_count\":9,\"courier_name\":\"EKART\"},{\"manifest_count\":13,\"courier_name\":\"Other\"}],\"in_transit\":[{\"order_count\":4,\"status\":\"Out for Delivery\"},{\"order_count\":2,\"status\":\"Pickup\"}],\"avg_sales\":2128.34,\"ndrOrderCounts\":[{\"app_order_status\":\"Delivered\",\"order_count\":4},{\"app_order_status\":\"In transit\",\"order_count\":15},{\"app_order_status\":\"Pickup\",\"order_count\":1}],\"average_delivery_time\":[{\"order_count\":1,\"days_taken\":0},{\"order_count\":1,\"days_taken\":-27},{\"order_count\":1,\"days_taken\":34},{\"order_count\":1,\"days_taken\":28},{\"order_count\":1,\"days_taken\":27}],\"total_orders\":1242,\"new_orders\":{\"domestic_cod\":131,\"domestic_prepaid\":82,\"International\":5},\"shipment_carrier\":[{\"count\":\"1611\",\"name\":\"bluedart\"},{\"count\":\"188\",\"name\":\"delhivery\"},{\"count\":\"63\",\"name\":\"dtdc\"},{\"count\":\"38\",\"name\":\"other\"},{\"count\":\"33\",\"name\":\"ekart\"},{\"count\":\"84\",\"name\":\"dhl\"}],\"sales\":[{\"start_time\":\"0:00\",\"total\":0,\"end_time\":\"3:00\"},{\"start_time\":\"3:00\",\"total\":0,\"end_time\":\"6:00\"},{\"start_time\":\"6:00\",\"total\":0,\"end_time\":\"9:00\"},{\"start_time\":\"9:00\",\"total\":0,\"end_time\":\"12:00\"},{\"start_time\":\"12:00\",\"total\":0,\"end_time\":\"15:00\"},{\"start_time\":\"15:00\",\"total\":0,\"end_time\":\"18:00\"},{\"start_time\":\"18:00\",\"total\":0,\"end_time\":\"21:00\"},{\"start_time\":\"21:00\",\"total\":0,\"end_time\":\"24:00\"}],\"labelled\":6,\"delivered_orders\":[{\"delayed_count\":4,\"ontime_count\":2}],\"perpaid_order\":621,\"printed\":358,\"cod_order\":621,\"in_progress\":364,\"shipped\":2017,\"recent_order\":[{\"price\":\"890.0\",\"order_number\":\"2333\",\"order_id\":\"5876529725689\",\"order_name\":\"#2333\"},{\"price\":\"640.0\",\"order_number\":\"2332\",\"order_id\":\"5876231340281\",\"order_name\":\"#2332\"},{\"price\":\"640.0\",\"order_number\":\"2331\",\"order_id\":\"5876230815993\",\"order_name\":\"#2331\"},{\"price\":\"840.0\",\"order_number\":\"2330\",\"order_id\":\"5871846293753\",\"order_name\":\"#2330\"},{\"price\":\"840.0\",\"order_number\":\"2329\",\"order_id\":\"5871846064377\",\"order_name\":\"#2329\"}],\"orders\":[{\"date\":\"2024-10-24\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-23\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-22\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-21\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-20\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-19\",\"order_count\":0,\"return_count\":0},{\"date\":\"2024-10-18\",\"order_count\":0,\"return_count\":0}],\"zone_performance_data\":{\"Delhivery\":[{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":16.5,\"total_orders\":2,\"delivered_orders\":2,\"payment_type\":\"COD\",\"in_transit_orders\":0,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":50,\"out_tat_percentage\":50},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":1,\"delayed_orders\":1,\"avg_tat\":11.6,\"total_orders\":3,\"delivered_orders\":2,\"payment_type\":\"prepaid\",\"in_transit_orders\":1,\"zone\":\"B\",\"out_tat_orders\":1,\"in_tat_percentage\":33.33,\"out_tat_percentage\":33.33},{\"shipping_carrier_name\":\"Delhivery\",\"returned_orders\":0,\"in_tat_orders\":0,\"delayed_orders\":1,\"avg_tat\":658,\"total_orders\":1,\"delivered_orders\":1,\"payment_type\":\"prepaid\",\"in_transit_orders\":0,\"zone\":\"C\",\"out_tat_orders\":1,\"in_tat_percentage\":0,\"out_tat_percentage\":100}]},\"total_sales\":2643401.85,\"customer\":484756}"
+				}
+			]
+		}
+	]
+}
